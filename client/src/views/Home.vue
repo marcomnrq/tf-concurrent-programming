@@ -17,55 +17,54 @@
           
                 <div class="flex items-center justify-center ">
                   <div class="bg-black flex flex-col w-80 border border-white rounded-lg px-8 py-10">
-                  
+                  <form action="/" method="post">
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="first_name">Monóxido de Carbono (ug/m3)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.CO" type="text" name="first_name" id="first_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="first_name" id="first_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">Ácido Sulfhídrico (ug/m3)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.H2S" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">Dióxido de Nitrógeno (ug/m3)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.NO2" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">Ozono (ug/m3)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.O3" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">PM10 (ug/m3)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.PM10" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">PM2,5 (ug/m3)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.PM2" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">Dióxido de Azufre(ug/m3)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.SO2" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">Ruido (dB)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.Ruido" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">UV</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.UV" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">Humedad (%)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.Humedad" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="mb-2 font-bold text-sm text-white" for="last_name">Presión (hPa)</label>
-                <input class="border py-2 px-3 text-grey-800" v-model.number="temperatureData.Presion" type="text" name="last_name" id="last_name">
+                <input class="border py-2 px-3 text-grey-800" type="text" name="last_name" id="last_name">
             </div>
             
-            <button class="block bg-green-400 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded" @click="getData()" >Enviar</button>
-            <h1 class="text-white"> La predicción es:{{result}}</h1>
-    
+            <button class="block bg-green-400 hover:bg-green-600 text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Enviar</button>
+        </form>
           
                 </div>
                 </div>
@@ -81,39 +80,9 @@
 </template>
 
 <script>
-import apiService from '../src/services/api'
-import axios from 'axios'
+import { ref } from "vue";
 
 export default {
-    data: () =>({
-        temperatureData: {
-            "CO": '',
-            "H2S": '',
-            "NO2": '',
-            "O3": '',
-            "PM10": '',
-            "PM2": '',
-            "SO2": '',
-            "Ruido": '',
-            "UV": '',
-            "Humedad": '',
-            "Presion": ''
-        },
-        result: null,
-    }),
-    methods: {
-        async getData(){
-            await axios({
-                method: 'post',
-                url: 'http://localhost:4000/getPrediction',
-                data: JSON.stringify(this.temperatureData),
-            }).then((response)=>{
-                console.log(response.data)
-                this.result = response.data
-            }).catch((error)=>{
-                console.log(error)
-            })
-        }
-    },
-}
+  
+};
 </script>
