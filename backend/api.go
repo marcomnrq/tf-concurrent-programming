@@ -58,18 +58,18 @@ type Temperature struct {
 }
 
 func generateCsvs() {
-	f, err := os.Open("temperature.csv")
+	resp, err := http.Get("https://raw.githubusercontent.com/MarcoMnrq/tf-concurrent-programming/main/backend/temperature.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	defer f.Close()
+	defer resp.Body.Close()
 	// we create a new csv reader specifying
 	// the number of columns it has
-	salesData := csv.NewReader(f)
-	salesData.FieldsPerRecord = 20
+	temperatureData := csv.NewReader(resp.Body)
+	temperatureData.FieldsPerRecord = 20
 	// we read all the records
-	records, err := salesData.ReadAll()
+	records, err := temperatureData.ReadAll()
 	if err != nil {
 		log.Fatal(err)
 	}
